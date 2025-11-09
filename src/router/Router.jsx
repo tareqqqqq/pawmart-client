@@ -4,10 +4,13 @@ import Home from "../pages/Home";
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import ListDetails from "../pages/ListDetails";
+import PetsAndSupplies from "../pages/PetsAndSupplies";
+import AddListing from "../pages/AddListing"
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout/>,
+    //  errorElement: <Error/>,
     children: [
       {
         path: "/",
@@ -33,8 +36,14 @@ export const router = createBrowserRouter([
        
       {
         path: "/products",
-         
+          loader: () => fetch('http://localhost:3000/listing'),
         element: <PetsAndSupplies />,
+      },
+      
+      {
+        path: "/add-listing",
+         
+        element: <AddListing/>,
       },
       
      
