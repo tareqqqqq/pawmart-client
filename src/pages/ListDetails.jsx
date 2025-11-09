@@ -12,6 +12,7 @@ const ListDetails = () => {
     const modalRef = useRef(null);
     
     const [loading,setLoading]=useState(true)
+    const [date, setDate] = useState("");
 
     
 
@@ -36,6 +37,7 @@ const ListDetails = () => {
         setLoading(false);
       });
   }, [id,user,loading]);
+
 
  
 
@@ -164,16 +166,85 @@ const ListDetails = () => {
                             <p className="py-4">Offer something seller can not resist</p>
                             <form onSubmit={handleBidSubmit}>
                                 <fieldset className="fieldset">
-                                    <label className="label">Name</label>
+                                   {/* Name Field */}
+          <div>
+            <label className="label font-medium"> Bayer Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              defaultValue={user?.displayName}
+            />
+          </div>
+                                   {/* Name Field */}
+          <div>
+            <label className="label font-medium"> Bayer Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              defaultValue={product.name}
+            />
+          </div>
                                     
-                                    {/* email */}
-                                    <label className="label">Email</label>
                                     
-                                    {/* bid amount */}
-                                    <label className="label">Bid</label>
-                                    <input type="text" name='bid' className="input"
-                                        placeholder='Your Bid'
+                                   {/* Email */}
+        <div>
+          <label className="block font-medium">Email</label>
+          <input
+            name="email"
+            type="email"
+            value={user?.email || ""}
+            readOnly
+            className="input input-bordered w-full bg-gray-100"
+          />
+        </div>
+                                    
+                                    {/* amount */}
+                                    <label className="label">Price</label>
+                                    <input type="text" name='price' className="input"
+                                        placeholder='Your Price'
                                     />
+                                    {/* amount */}
+                                    <label className="label">Phone</label>
+                                    <input type="text" name='phone' className="input"
+                                        placeholder='Your Phone'
+                                    />
+                                    {/* amount */}
+                                    <label className="label">Quantity</label>
+                                    <input type="text" name='quantity' className="input"
+                                        placeholder='Quantity'
+                                    />
+                                    {/* amount */}
+                                    <label className="label">Address</label>
+                                    <input type="text" name='address' className="input"
+                                        placeholder='Your Price'
+                                    />
+                                    {/* Date */}
+        <div>
+          <label className="block font-medium">Date</label>
+          <input
+            name="date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+            className="input input-bordered w-full"
+          />
+        </div>
+                                    {/* Description Textarea */}
+          <div>
+            <label className="label font-medium">Add Notes</label>
+            <textarea
+              name="description"
+              required
+              rows="3"
+             className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[250px]"
+              placeholder="Enter description"
+            ></textarea>
+          </div>
                                     <button className="btn btn-neutral mt-4">Order</button>
                                 </fieldset>
                             </form>
