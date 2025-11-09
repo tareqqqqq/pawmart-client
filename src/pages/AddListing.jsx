@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { use } from "react";
 
 import toast from "react-hot-toast";
@@ -9,6 +9,9 @@ import { AuthContext } from '../Auth/AuthContext';
 const AddListing = () => {
 
       const { user } = use(AuthContext)
+       const [category, setCategory] = useState("");
+  const [price, setPrice] = useState(0);
+   const [date, setDate] = useState("");
 
 
   const handleSubmit = (e) => {
@@ -18,10 +21,10 @@ const AddListing = () => {
       name: e.target.name.value,
       category: e.target.category.value,
       description: e.target.description.value,
-      thumbnail: e.target.thumbnail.value,
-      created_at: new Date(),
-      downloads: 0,
-      created_by: user.email
+      image: e.target.image.value,
+     date,
+      location:e.target.location.value,
+      email: user?.email
     }
 
     fetch('http://localhost:3000/post-products', {
@@ -51,13 +54,36 @@ const AddListing = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
-            <label className="label font-medium">Name</label>
+            <label className="label font-medium"> Pet Name</label>
             <input
               type="text"
               name="name"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Enter name"
+            />
+          </div>
+          <div>
+            <label className="label font-medium">Price</label>
+            <input
+              type="number"
+              name="price"
+              value={category === "Pets" ? 0 : price}
+            onChange={(e) => setPrice(e.target.value)}
+            readOnly={category === "Pets"}
+              required 
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Enter price"
+            />
+          </div>
+          <div>
+            <label className="label font-medium">Location</label>
+            <input
+              type="text"
+              name="location"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="location"
             />
           </div>
 
@@ -67,19 +93,23 @@ const AddListing = () => {
             <select
               defaultValue={""}
               name="category"
+              value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+              if (e.target.value === "Pets") setPrice(0);
+            }}
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
             >
               <option value="" disabled>
                 Select category
               </option>
-              <option value="Vehicles">Vehicles</option>
-              <option value="Plants">Plants</option>
+              
+              <option value="Plants">Pets</option>
               <option value="Foods">Foods</option>
-              <option value="Home & Living">Home & Living</option>
-              <option value="Characters">Characters</option>
-              <option value="Space">Space</option>
-              <option value="Animals">Animals</option>
+              <option value="Home & Living">Accessories</option>
+              <option value="Characters">Care Products</option>
+             
               <option value="Other">Other</option>
             </select>
           </div>
@@ -96,17 +126,41 @@ const AddListing = () => {
             ></textarea>
           </div>
 
-          {/* Thumbnail URL */}
+          {/* Img URL */}
           <div>
-            <label className="label font-medium">Thumbnail URL</label>
+            <label className="label font-medium">Image URL</label>
             <input
               type="url"
-              name="thumbnail"
+              name="image"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"
             />
           </div>
+          {/* Date */}
+        <div>
+          <label className="block font-medium">Pick-Up Date</label>
+          <input
+            name="date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+            className="input input-bordered w-full"
+          />
+        </div>
+            {/* Email */}
+        <div>
+          <label className="block font-medium">Email (readonly)</label>
+          <input
+            name="email"
+            type="email"
+            value={user?.email || ""}
+            readOnly
+            className="input input-bordered w-full bg-gray-100"
+          />
+        </div>
+        
 
           {/* Submit Button */}
           <button

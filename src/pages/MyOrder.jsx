@@ -11,7 +11,7 @@ const MyOrder = () => {
    
        useEffect(()=> {
    
-           fetch(`http://localhost:3000/my-products?email=${user.email}`)
+           fetch(`http://localhost:3000/my-orders?email=${user.email}`)
            .then(res=> res.json())
            .then(data=> {
                

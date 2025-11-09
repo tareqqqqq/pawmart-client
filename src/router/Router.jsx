@@ -6,6 +6,8 @@ import Register from "../pages/Register"
 import ListDetails from "../pages/ListDetails";
 import PetsAndSupplies from "../pages/PetsAndSupplies";
 import AddListing from "../pages/AddListing"
+import MyOrder from "../pages/MyOrder"
+import MyListing from "../pages/MyListing"
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +47,18 @@ export const router = createBrowserRouter([
          
         element: <AddListing/>,
       },
+      {
+        path: "/my-orders",
+         
+        element: <MyOrder/>,
+      },
+      
+      {
+        path: "/my-listing",
+         
+        element: <MyListing/>,
+      },
+      
       
      
       
