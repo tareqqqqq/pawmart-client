@@ -1,17 +1,19 @@
-import React, {  useEffect, useRef, useState } from 'react';
-import { useLoaderData } from 'react-router';
-// import { AuthContext } from '../Auth/AuthContext';
+import React, { use,useEffect, useRef, useState } from 'react';
+
+import { AuthContext } from '../Auth/AuthContext';
 import Swal from 'sweetalert2';
+import { useParams } from "react-router";
 
 const ListDetails = () => {
+  const {user}=use(AuthContext)
 
-      const { _id: productId } = useLoaderData();
+      const { id } = useParams()
     const [product, setProduct] = useState([])
     const modalRef = useRef(null);
     
     const [loading,setLoading]=useState(true)
 
-    console.log(product)
+    
 
     
 
@@ -22,18 +24,18 @@ const ListDetails = () => {
   useEffect(() => {
    
     
-    fetch(`http://localhost:3000/products/orders/${productId}`)
+    fetch(`http://localhost:3000/listing/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setProduct(data);
+        setProduct(data.result);
 
-        console.log(data);
+       
         
         
        
         setLoading(false);
       });
-  }, [productId,loading]);
+  }, [id,user,loading]);
 
  
 
@@ -56,13 +58,25 @@ const ListDetails = () => {
        
 
         const newProduct = {
-            product: productId,
+           
             buyer_name: name,
             buyer_email: email,
-            // buyer_image: user?.photoURL,
-            bid_price: bid,
-            status: 'pending'
+            buyer_image: user?.photoURL,
+            price: bid,
+           
         }
+
+
+//         &quot;productId&quot;: &quot;65488adsfadf5454f&quot;,
+// &quot;productName&quot;: &quot;Golden Retriever Puppy&quot;,
+// &quot;buyerName&quot;: &quot;Mr. X&quot;,
+// &quot;email&quot;: &quot;buyer@gmail.com&quot;,
+// &quot;quantity&quot;: 1,
+// &quot;price&quot;: 0,
+// &quot;address&quot;: &quot;Chattogram&quot;,
+// &quot;phone&quot;: &quot;017xxxxxxx&quot;,
+// &quot;date&quot;: &quot;2025-10-27&quot;
+// &quot;additionalNotes&quot;: &quot;Some Text&quot;
 
         fetch('http://localhost:3000/orders', {
             method: 'POST',
@@ -85,7 +99,7 @@ const ListDetails = () => {
                     // add the new bid to the state
                     newProduct._id = data.insertedId;
                     const newProducts = [...product, newProduct];
-                    newProduct.sort((a, b) => b.bid_price - a.bid_price);
+                    newProduct.sort((a, b) => b.price - a.price);
                     setProduct(newProducts);
                 }
             })

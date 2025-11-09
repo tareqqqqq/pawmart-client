@@ -19,18 +19,20 @@ const AddListing = () => {
 
     const formData = {
       name: e.target.name.value,
-      category: e.target.category.value,
-      description: e.target.description.value,
-      image: e.target.image.value,
-     date,
+      category,
+       price: category === "Pets" ? 0 : parseFloat(price),
       location:e.target.location.value,
-      email: user?.email
+      description: e.target.description.value,
+     
+       image: e.target.image.value,
+      email: user?.email,
+        date,
     }
 
-    fetch('http://localhost:3000/post-products', {
+    fetch('http://localhost:3000/post-product', {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":"application/json",
         
       },
       body: JSON.stringify(formData)
@@ -43,6 +45,8 @@ const AddListing = () => {
     .catch(err => {
       console.log(err)
     })
+
+    
    
 
   }
@@ -63,35 +67,11 @@ const AddListing = () => {
               placeholder="Enter name"
             />
           </div>
-          <div>
-            <label className="label font-medium">Price</label>
-            <input
-              type="number"
-              name="price"
-              value={category === "Pets" ? 0 : price}
-            onChange={(e) => setPrice(e.target.value)}
-            readOnly={category === "Pets"}
-              required 
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter price"
-            />
-          </div>
-          <div>
-            <label className="label font-medium">Location</label>
-            <input
-              type="text"
-              name="location"
-              required
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="location"
-            />
-          </div>
-
-          {/* Category Dropdown */}
+           {/* Category Dropdown */}
           <div>
             <label className="label font-medium">Category</label>
             <select
-              defaultValue={""}
+              
               name="category"
               value={category}
             onChange={(e) => {
@@ -113,6 +93,34 @@ const AddListing = () => {
               <option value="Other">Other</option>
             </select>
           </div>
+
+          {/* price */}
+          <div>
+            <label className="label font-medium">Price</label>
+            <input
+              type="number"
+              name="price"
+              value={category === "Pets" ? 0 : price}
+            onChange={(e) => setPrice(e.target.value)}
+            readOnly={category === "Pets"}
+              required 
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Enter price"
+            />
+          </div>
+          {/* location */}
+          <div>
+            <label className="label font-medium">Location</label>
+            <input
+              type="text"
+              name="location"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="location"
+            />
+          </div>
+
+         
 
           {/* Description Textarea */}
           <div>
@@ -139,7 +147,7 @@ const AddListing = () => {
           </div>
           {/* Date */}
         <div>
-          <label className="block font-medium">Pick-Up Date</label>
+          <label className="block font-medium">Date</label>
           <input
             name="date"
             type="date"
@@ -151,7 +159,7 @@ const AddListing = () => {
         </div>
             {/* Email */}
         <div>
-          <label className="block font-medium">Email (readonly)</label>
+          <label className="block font-medium">Email</label>
           <input
             name="email"
             type="email"

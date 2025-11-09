@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Card = ({product}) => {
-     const {name, images, category, description, location,price,_id} = product
+     const {name, image, category, description, location,price,_id} = product
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <figure className="h-48 overflow-hidden">
         <img
-          src={images}
+          src={image}
           alt={name}
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
         />

@@ -21,7 +21,7 @@ const MyListing = () => {
             setLoading(false)
         })
 
-    }, [user])
+    }, [user,loading])
 
 
     if(loading) {
