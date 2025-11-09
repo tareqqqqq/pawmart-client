@@ -13,14 +13,15 @@ import { getAuth } from "firebase/auth";
 //   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
 //   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 // };
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAdICWmJT1uBSYikCV9wQPlabRzM5VhjbE",
-    authDomain: "models-56671.firebaseapp.com",
-    projectId: "models-56671",
-    storageBucket: "models-56671.firebasestorage.app",
-    messagingSenderId: "832579126289",
-    appId: "1:832579126289:web:b43b39d957af762d649db0"
-  };
+  apiKey: "AIzaSyB6b3HXJh8VxMspE_cehEwM7Vjg0Dd37fA",
+  authDomain: "pawmart-94f37.firebaseapp.com",
+  projectId: "pawmart-94f37",
+  storageBucket: "pawmart-94f37.firebasestorage.app",
+  messagingSenderId: "756211596171",
+  appId: "1:756211596171:web:aa2ee0c575b0fcda784d8e"
+};
   
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
