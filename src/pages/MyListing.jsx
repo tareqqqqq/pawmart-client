@@ -1,7 +1,8 @@
 
 import { use, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+
 import Card from '../components/Card';
+import { AuthContext } from "../Auth/AuthContext";
 
 
 const MyListing = () => {
