@@ -24,11 +24,11 @@ const AddListing = () => {
       created_by: user.email
     }
 
-    fetch('http://localhost:3000/post-models', {
+    fetch('http://localhost:3000/post-products', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-         authorization: `Bearer ${user?.accessToken}`,
+        
       },
       body: JSON.stringify(formData)
     })
