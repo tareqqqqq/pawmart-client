@@ -13,6 +13,7 @@ const ListDetails = () => {
     
     const [loading,setLoading]=useState(true)
     const [date, setDate] = useState("");
+    const [quantity, setQuantity] = useState(1);
 
     
 
@@ -53,39 +54,29 @@ const ListDetails = () => {
 
     const handleBidSubmit = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const bid = e.target.bid.value;
+       const form = e.target;
 
-       
+  const newOrder = {
+    productId: form.productId.value,
+    productName: product?.name,
+    buyerName: user?.displayName,
+    email: user?.email,
+    quantity: product?.category === "Pets" ? 1 : parseInt(form.quantity.value),
+    price: parseFloat(product?.price || 0),
+    address: form.address.value,
+    phone: form.phone.value,
+    date,
+    additionalNotes: form.description.value,
+  };
 
-        const newProduct = {
-           
-            buyer_name: name,
-            buyer_email: email,
-            buyer_image: user?.photoURL,
-            price: bid,
-           
-        }
-
-
-//         &quot;productId&quot;: &quot;65488adsfadf5454f&quot;,
-// &quot;productName&quot;: &quot;Golden Retriever Puppy&quot;,
-// &quot;buyerName&quot;: &quot;Mr. X&quot;,
-// &quot;email&quot;: &quot;buyer@gmail.com&quot;,
-// &quot;quantity&quot;: 1,
-// &quot;price&quot;: 0,
-// &quot;address&quot;: &quot;Chattogram&quot;,
-// &quot;phone&quot;: &quot;017xxxxxxx&quot;,
-// &quot;date&quot;: &quot;2025-10-27&quot;
-// &quot;additionalNotes&quot;: &quot;Some Text&quot;
+//         
 
         fetch('http://localhost:3000/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newProduct)
+            body: JSON.stringify(newOrder)
         })
             .then(res => res.json())
             .then(data => {
@@ -99,10 +90,10 @@ const ListDetails = () => {
                         timer: 1500
                     });
                     // add the new bid to the state
-                    newProduct._id = data.insertedId;
-                    const newProducts = [...product, newProduct];
-                    newProduct.sort((a, b) => b.price - a.price);
-                    setProduct(newProducts);
+                    // newOrder._id = data.insertedId;
+                    // const newOrders= [...product, newOrder];
+                    // newOrders.sort((a, b) => b.price - a.price);
+                    // setProduct(newOrders);
                 }
             })
 
@@ -172,9 +163,9 @@ const ListDetails = () => {
             <input
               type="text"
               name="name"
-              required
+             readOnly
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              defaultValue={user?.displayName}
+               value={user?.displayName || ""}
             />
           </div>
                                    {/* Name Field */}
@@ -183,9 +174,10 @@ const ListDetails = () => {
             <input
               type="text"
               name="name"
-              required
+             
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              defaultValue={product.name}
+              readOnly
+        value={product?.name || ""}
             />
           </div>
                                     
@@ -198,28 +190,49 @@ const ListDetails = () => {
             type="email"
             value={user?.email || ""}
             readOnly
-            className="input input-bordered w-full bg-gray-100"
+           className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
           />
         </div>
+        {/* Product/Listing ID */}
+    <div>
+      <label className="label font-medium">Product / Listing ID</label>
+      <input
+        type="text"
+        name="productId"
+        readOnly
+        value={product?._id || ""}
+        className="input w-full rounded-full bg-gray-100 focus:border-0 focus:outline-gray-200"/>
+       </div>  
+
+       {/* Quantity */}
+    <div>
+      <label className="label font-medium">Quantity</label>
+      <input
+        type="number"
+        name="quantity"
+        value={product?.category === "Pets" ? 1 : quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+        readOnly={product?.category === "Pets"}
+        className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+      />
+    </div>
                                     
                                     {/* amount */}
                                     <label className="label">Price</label>
-                                    <input type="text" name='price' className="input"
+                                    <input type="text" name='price' readOnly
+                                     value={product?.price || 0} className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
                                         placeholder='Your Price'
                                     />
                                     {/* amount */}
                                     <label className="label">Phone</label>
-                                    <input type="text" name='phone' className="input"
+                                    <input type="text" name='phone' className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
                                         placeholder='Your Phone'
                                     />
-                                    {/* amount */}
-                                    <label className="label">Quantity</label>
-                                    <input type="text" name='quantity' className="input"
-                                        placeholder='Quantity'
-                                    />
-                                    {/* amount */}
+                                   
+                                    
+                                    {/* address */}
                                     <label className="label">Address</label>
-                                    <input type="text" name='address' className="input"
+                                    <input type="text" name='address' className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
                                         placeholder='Your Price'
                                     />
                                     {/* Date */}
@@ -231,7 +244,7 @@ const ListDetails = () => {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
-            className="input input-bordered w-full"
+            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
           />
         </div>
                                     {/* Description Textarea */}
@@ -245,7 +258,7 @@ const ListDetails = () => {
               placeholder="Enter description"
             ></textarea>
           </div>
-                                    <button className="btn btn-neutral mt-4">Order</button>
+                                    <button type="submit" className="btn btn-neutral mt-4">Order</button>
                                 </fieldset>
                             </form>
 

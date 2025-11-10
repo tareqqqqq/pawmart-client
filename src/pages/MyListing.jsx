@@ -12,6 +12,7 @@ const MyListing = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(()=> {
+        if (!user?.email) return;
 
         fetch(`http://localhost:3000/my-products?email=${user.email}`)
         .then(res=> res.json())

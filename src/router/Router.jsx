@@ -8,6 +8,7 @@ import PetsAndSupplies from "../pages/PetsAndSupplies";
 import AddListing from "../pages/AddListing"
 import MyOrder from "../pages/MyOrder"
 import MyListing from "../pages/MyListing"
+import CategoryFilteredProduct from "../pages/CategoryFilteredProduct";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -26,8 +27,13 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/auth/register",
-        element: <Register />,
+        path: "/auth/login",
+         
+        element: <Login />,
+      },
+      {
+         path:"/category-filtered-product/:categoryName",
+        element:<CategoryFilteredProduct/>,
       },
       
       {
