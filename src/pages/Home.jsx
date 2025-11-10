@@ -2,13 +2,17 @@
 import Banner from '../components/Banner';
 import Card from '../components/Card'
 import { useLoaderData } from 'react-router';
+import WhyAdopt from '../components/WhyAdopt';
+import Section from '../components/Section';
+import CategorySection from '../components/CategorySection';
 
 const Home = () => {
      const data = useLoaderData()
      
     return (
-        <div>
+        <div className='container m-auto'>
             <Banner/>
+            <CategorySection/>
 
             <div className='container m-auto'>
              <div className="text-center text-xl font-bold mt-10">Latest Model</div>
@@ -17,7 +21,8 @@ const Home = () => {
 {data.map(product => <Card  key={product._id} product={product}/>)}
 </div>
         </div>
-            
+            <WhyAdopt/>
+            <Section/>
         </div>
     );
 };
