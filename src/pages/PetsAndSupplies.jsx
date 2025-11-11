@@ -27,6 +27,7 @@ const PetsAndSupplies = () => {
     return (
         <div>
             <div className='container m-auto'>
+                <title>Cats & Supplies</title>
              <div className="text-center text-xl font-bold mt-10">Latest Model</div>
 
             <div>  <form onSubmit={handleSearch} className=" mt-5 mb-10 flex gap-2 justify-center">

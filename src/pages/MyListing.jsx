@@ -11,8 +11,9 @@ const MyListing = () => {
 
   // ✅ Fetch user’s own listings
   useEffect(() => {
-    if (!user?.email) return;
-    fetch(`http://localhost:3000/my-products?email=${user.email}`)
+    if (!user?.email) return; 
+    // my-products
+    fetch(`http://localhost:3000/listing?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setListings(data);
@@ -102,6 +103,7 @@ const MyListing = () => {
 
   return (
     <div className="p-6">
+        <title>My Listing</title>
       <h2 className="text-3xl font-bold text-center mb-6">My Listings</h2>
 
       {listings.length === 0 ? (

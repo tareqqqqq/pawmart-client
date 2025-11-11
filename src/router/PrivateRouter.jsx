@@ -1,9 +1,10 @@
 import { use } from "react";
 
 import { Navigate } from "react-router";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../Auth/AuthContext";
 
-const PrivateRoute = ({ children }) => {
+
+const PrivateRouter = ({ children }) => {
   const { user, loading } = use(AuthContext);
 
   if (loading) {
@@ -17,4 +18,4 @@ const PrivateRoute = ({ children }) => {
   return children;
 };
 
-export default PrivateRoute;
+export default PrivateRouter;

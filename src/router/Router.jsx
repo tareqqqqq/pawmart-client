@@ -9,6 +9,7 @@ import AddListing from "../pages/AddListing"
 import MyOrder from "../pages/MyOrder"
 import MyListing from "../pages/MyListing"
 import CategoryFilteredProduct from "../pages/CategoryFilteredProduct";
+import PrivateRouter from "./PrivateRouter";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -27,9 +28,9 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/auth/login",
+        path: "/auth/register",
          
-        element: <Login />,
+        element: <Register />,
       },
       {
          path:"/category-filtered-product/:categoryName",
@@ -39,30 +40,30 @@ export const router = createBrowserRouter([
       {
         path: "/product-details/:id",
         
-        element: <ListDetails/>,
+        element:<PrivateRouter><ListDetails/></PrivateRouter> ,
       },
        
       {
         path: "/products",
           loader: () => fetch('http://localhost:3000/listing'),
-        element: <PetsAndSupplies />,
+        element:<PrivateRouter><PetsAndSupplies /></PrivateRouter> ,
       },
       
       {
         path: "/add-listing",
          
-        element: <AddListing/>,
+        element:<PrivateRouter><AddListing/></PrivateRouter> ,
       },
       {
         path: "/my-orders",
          
-        element: <MyOrder/>,
+        element:<PrivateRouter><MyOrder/></PrivateRouter> ,
       },
       
       {
         path: "/my-listing",
          
-        element: <MyListing/>,
+        element: <PrivateRouter><MyListing/></PrivateRouter>,
       },
       
       

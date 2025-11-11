@@ -5,7 +5,7 @@ const heroes = [
     name: "Sadia Rahman",
     role: "Animal Rescuer",
     image:
-      "https://i.ibb.co/vPgrnQb/woman-pet1.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2v03FZLjpf6vbweOfu8zQJAYY1i2ugE6F-g&s",
     quote:
       "Adopting from PawMart changed my life — I rescued Milo, and he rescued me back with love!",
   },
@@ -13,7 +13,7 @@ const heroes = [
     name: "Tariq Hasan",
     role: "Volunteer Caregiver",
     image:
-      "https://i.ibb.co/1msbXhJ/man-pet1.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFil4X-bTw-PSIRLB0YFMiK5EbiXdrQSoeHA&s",
     quote:
       "Every animal deserves love and care. PawMart connects hearts with furry friends perfectly.",
   },
@@ -21,7 +21,7 @@ const heroes = [
     name: "Nabila Chowdhury",
     role: "Pet Parent",
     image:
-      "https://i.ibb.co/7vWpHt8/woman-pet2.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVBZ2ed4XdbtxR8Xe4LhQK5XABtx0bACcL6Q&s",
     quote:
       "I never thought adopting a rescue cat could bring so much joy into our home!",
   },

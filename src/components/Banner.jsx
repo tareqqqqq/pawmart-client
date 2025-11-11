@@ -5,14 +5,14 @@ const slides = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1558944351-c7e711d1f52d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.squarespace-cdn.com/content/v1/54e7a1a6e4b08db9da801ded/1bd563c1-7bbb-4b44-af21-a60408b6f129/44.png",
     title: "Find Your Furry Friend Today!",
     subtitle: "Discover loving pets waiting for their forever homes.",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1601758123927-1965df6f5b85?auto=format&fit=crop&w=1200&q=80",
+      "https://www.thesprucepets.com/thmb/FYvsKjlu7-W2e2B3MJVKtAIPaok=/6550x0/filters:no_upscale():strip_icc()/GettyImages-499806311-c2931b8c09624ebab230f280ab1f57b3.jpg",
     title: "Adopt, Don’t Shop — Give a Pet a Home.",
     subtitle:
       "Be the reason a pet wags its tail again. Choose adoption today!",
@@ -20,7 +20,7 @@ const slides = [
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1583511655681-25c0baad9c03?auto=format&fit=crop&w=1200&q=80",
+      "https://docansede.com/wp-content/uploads/2021/07/shutterstock_678297925.jpg",
     title: "Because Every Pet Deserves Love and Care.",
     subtitle:
       "Your compassion can change a life — adopt and spread happiness.",

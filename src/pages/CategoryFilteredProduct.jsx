@@ -8,7 +8,7 @@ const CategoryFilteredProduct = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/listing?category=${categoryName}`)
+    fetch(`http://localhost:3000/listing-category?category=${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -20,6 +20,7 @@ const CategoryFilteredProduct = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+     <title>{categoryName}</title>
       <h2 className="text-2xl font-bold mb-6 text-center">
         Showing Products for: {categoryName}
       </h2>

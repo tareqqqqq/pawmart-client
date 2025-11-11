@@ -5,12 +5,24 @@ import { useLoaderData } from 'react-router';
 import WhyAdopt from '../components/WhyAdopt';
 import Section from '../components/Section';
 import CategorySection from '../components/CategorySection';
+import { use } from 'react';
+import { AuthContext } from '../Auth/AuthContext';
 
 const Home = () => {
      const data = useLoaderData()
+     const { loading } = use(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-xl font-semibold animate-pulse">Loading...</p>
+      </div>
+    );
+  }
      
     return (
         <div className='container m-auto'>
+            <title>Home</title>
             <Banner/>
             <CategorySection/>
 
