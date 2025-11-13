@@ -13,7 +13,8 @@ const MyListing = () => {
   useEffect(() => {
     if (!user?.email) return; 
     // my-products
-    fetch(`http://localhost:3000/listing?email=${user.email}`)
+    // 
+    fetch(`https://paw-mart-server-self.vercel.app/my-products?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setListings(data);
@@ -33,7 +34,7 @@ const MyListing = () => {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/listing/${id}`, {
+        fetch(`https://paw-mart-server-self.vercel.app/listing/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -71,7 +72,7 @@ const MyListing = () => {
       image: form.image.value,
     };
 
-    fetch(`http://localhost:3000/listing/${editingItem._id}`, {
+    fetch(`https://paw-mart-server-self.vercel.app/listing/${editingItem._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -99,10 +100,17 @@ const MyListing = () => {
       .catch((err) => console.error(err));
   };
 
-  if (loading) return <p className="text-center mt-8">Loading...</p>;
+  if (loading){
+    return(
+      <div className="flex items-center justify-center min-h-screen">
+  <span className="loading loading-spinner loading-xl"></span>
+</div>
+
+    )
+  } 
 
   return (
-    <div className="p-6">
+    <div className="p-6 container m-auto">
         <title>My Listing</title>
       <h2 className="text-3xl font-bold text-center mb-6">My Listings</h2>
 

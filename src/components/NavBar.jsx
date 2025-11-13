@@ -1,10 +1,12 @@
 import { Link, NavLink } from "react-router";
 import { IoLogoModelS } from "react-icons/io";
 import { GoHomeFill } from "react-icons/go";
-import { IoLogIn, IoLogOut } from "react-icons/io5";
-import { FaGear, FaUser } from "react-icons/fa6";
-import { LuRotate3D } from "react-icons/lu";
+import {IoPaw, IoLogIn, IoLogOut } from "react-icons/io5";
+import { FaGear } from "react-icons/fa6";
+
+import { MdShoppingCart } from "react-icons/md";
 import { ImBoxAdd } from "react-icons/im";
+import { FaListAlt, FaClipboardList } from "react-icons/fa";
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../Auth/AuthContext";
 
@@ -27,7 +29,7 @@ const NavBar = () => {
     <div className="navbar py-0 min-h-0 z-1 shadow-sm rounded-full glass-card container m-auto">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -49,49 +51,83 @@ const NavBar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to={"/"}>
-                <GoHomeFill />
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/all-models"}>
-                <IoLogoModelS /> All Models
-              </NavLink>
-            </li>
+            <NavLink to="/">
+              <GoHomeFill /> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/products">
+              <MdShoppingCart /> Pets & Supplies
+            </NavLink>
+          </li>
+
+          {user && (
+            <>
+              <li>
+                <NavLink to="/add-listing">
+                  <ImBoxAdd /> Add Listing
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-listing">
+                  <FaListAlt /> My Listings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-orders">
+                  <FaClipboardList /> My Orders
+                </NavLink>
+              </li>
+            </>
+          )}
           </ul>
         </div>
         <Link to={"/"} className="flex items-center gap-1 text-xl font-bold">
-          <LuRotate3D /> 3D Models Hub
+         <IoPaw className="text-pink-500 text-3xl" /> PawMart
         </Link>
       </div>
-      <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1 gap-10">
+      <div className="navbar-center hidden lg:flex ">
+         <ul className="menu menu-horizontal px-1 flex items-center gap-8 text-base font-medium">
           <li>
-            <NavLink to={"/"}>
-              <GoHomeFill />
-              Home
+            <NavLink to="/">
+              <GoHomeFill /> Home
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/products"}>
-              <IoLogoModelS /> Pets And Supplies
+            <NavLink to="/products">
+              <MdShoppingCart /> Pets & Supplies
             </NavLink>
           </li>
-          <li>
-            <NavLink to={"/add-listing"}>
-             <ImBoxAdd /> Add Listing
-            </NavLink>
-          </li>
-{/* 
-          <li>
-            <NavLink to={"/profile"}>
-              <FaUser /> Profile
-            </NavLink>
-          </li> */}
+
+          {user && (
+            <>
+              <li>
+                <NavLink to="/add-listing">
+                  <ImBoxAdd /> Add Listing
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-listing">
+                  <FaListAlt /> My Listings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-orders">
+                  <FaClipboardList /> My Orders
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end gap-3">
+        <div>
+          <input
+           onChange={(e)=> handleTheme(e.target.checked)}
+           type="checkbox"
+           defaultChecked={localStorage.getItem('theme') === "dark"}
+           className="toggle"/>
+        </div>
         {user ? (
           <div className="dropdown dropdown-end z-50">
             <div
@@ -115,36 +151,14 @@ const NavBar = () => {
                 <li className="text-sm font-bold">{user?.displayName}</li>
                 <li className="text-xs">{user?.email}</li>
               </div>
-              <li className="mt-3">
-                <Link to={"/profile"}>
-                  <FaUser /> Profile
-                </Link>
-              </li>
-
-              <li>
-                <Link to={"/my-listing"}>
-                  My Listing
-                </Link>
-              </li>
-
-              <li >
-                <Link to={"/my-orders"}>
-                 My Orders
-                </Link>
-              </li>
-
-              <input
-           onChange={(e)=> handleTheme(e.target.checked)}
-           type="checkbox"
-           defaultChecked={localStorage.getItem('theme') === "dark"}
-           className="toggle"/>
+             
               
-              <li>
-                <a>
-                  {" "}
-                  <FaGear /> Settings
-                </a>
-              </li>
+
+              
+
+              
+              
+              
               <li>
                 <button
                   onClick={signOutUser}

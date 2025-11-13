@@ -14,9 +14,10 @@ const Home = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-xl font-semibold animate-pulse">Loading...</p>
-      </div>
+      <div className="flex items-center justify-center min-h-screen">
+  <span className="loading loading-spinner loading-xl"></span>
+</div>
+
     );
   }
      

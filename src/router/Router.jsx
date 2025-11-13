@@ -10,16 +10,17 @@ import MyOrder from "../pages/MyOrder"
 import MyListing from "../pages/MyListing"
 import CategoryFilteredProduct from "../pages/CategoryFilteredProduct";
 import PrivateRouter from "./PrivateRouter";
+import Error from "../Erorr and Loading/Error";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout/>,
-    //  errorElement: <Error/>,
+     errorElement: <Error/>,
     children: [
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:3000/current-listing')
+        loader: () => fetch('https://paw-mart-server-self.vercel.app/current-listing')
       },
       
       {
@@ -45,8 +46,8 @@ export const router = createBrowserRouter([
        
       {
         path: "/products",
-          loader: () => fetch('http://localhost:3000/listing'),
-        element:<PrivateRouter><PetsAndSupplies /></PrivateRouter> ,
+          loader: () => fetch('https://paw-mart-server-self.vercel.app/listing'),
+        element:<PetsAndSupplies /> ,
       },
       
       {

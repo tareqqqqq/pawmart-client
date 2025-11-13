@@ -8,7 +8,7 @@ const CategoryFilteredProduct = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/listing-category?category=${categoryName}`)
+    fetch(`https://paw-mart-server-self.vercel.app/listing-category?category=${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

@@ -26,7 +26,7 @@ const ListDetails = () => {
   useEffect(() => {
    
     
-    fetch(`http://localhost:3000/listing/${id}`)
+    fetch(`https://paw-mart-server-self.vercel.app/listing/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.result);
@@ -44,7 +44,12 @@ const ListDetails = () => {
 
   
   if (loading) {
-    return <div> Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+  <span className="loading loading-spinner loading-xl"></span>
+</div>
+
+    );
   }
 
 
@@ -71,7 +76,7 @@ const ListDetails = () => {
 
 //         
 
-        fetch('http://localhost:3000/orders', {
+        fetch('https://paw-mart-server-self.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -104,47 +109,65 @@ const ListDetails = () => {
           <title>{product.name}</title>
 
 
-        <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
-      <div className="card bg-base-100 shadow-xl border border-gray-200 rounded-2xl overflow-hidden">
-        <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8">
-          <div className="shrink-0 w-full md:w-1/2">
-            <img
-              src={product.image}
-              alt=""
-              className="w-full object-cover rounded-xl shadow-md"
-            />
+       <div className="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
+  <div className="card bg-white shadow-lg border border-gray-100 rounded-3xl overflow-hidden">
+    <div className="flex flex-col md:flex-row gap-8 p-6 md:p-10">
+      
+      {/* 🐶 Image Section */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-80 object-cover rounded-2xl shadow-md hover:scale-[1.02] transition-transform duration-300"
+        />
+      </div>
+
+      {/* 📝 Info Section */}
+      <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+          {product.name}
+        </h1>
+
+        {/* 🏷️ Category + Price */}
+        <div className="flex flex-wrap gap-3 mt-2">
+          <div className="badge badge-lg bg-pink-100 text-pink-600 font-semibold px-4 py-2 border-0">
+            {product.category}
           </div>
-
-          <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-              {product.name}
-            </h1>
-
-            <div className="flex gap-3">
-              <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                {product.category}
-              </div>
-
-              <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                price: {product.price}
-              </div>
-            </div>
-
-            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-              {product.description}
-            </p>
-
-            <div className="flex gap-3 mt-6">
-               <button
-                        onClick={handleBidModalOpen}
-                        className="btn btn-primary">Order</button>
-             
-              
-            </div>
+          <div className="badge badge-lg bg-green-100 text-green-700 font-semibold px-4 py-2 border-0">
+            ৳ {product.price}
           </div>
+        </div>
+
+        {/* 📍 Location + Email */}
+        <div className="text-gray-600 space-y-1 mt-3 text-sm md:text-base">
+          <p><strong>📍 Location:</strong> {product.location}</p>
+          <p><strong>📧 Owner:</strong> {product.email}</p>
+        </div>
+
+        {/*  Description */}
+        <p className="text-gray-700 leading-relaxed text-base md:text-lg border-t pt-4 mt-4">
+          {product.description}
+        </p>
+
+        {/*  Order Button */}
+        <div className="flex gap-3 mt-6">
+          <button
+            onClick={handleBidModalOpen}
+            className="btn text-white rounded-full px-8 bg-linear-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 border-none shadow-md"
+          >
+             Order Now
+          </button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+
+
+    
+    
 
 
     {/* modal  */}

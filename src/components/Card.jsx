@@ -19,8 +19,8 @@ const Card = ({product}) => {
         <p className="line-clamp-1">
             {description}
         </p>
-        <p className="line-clamp-1">
-            {price}
+        <p className="font-bold text-lg">
+           $ {price}
         </p>
         {/* <p className="text-sm text-base-content/70">by {author}</p> */}
         <div className="card-actions justify-between items-center mt-4">
@@ -34,7 +34,7 @@ const Card = ({product}) => {
               {likes}
             </span> */}
           </div>
-          <Link to={`/product-details/${_id}`} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">View</Link>
+          <Link to={`/product-details/${_id}`} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">View Details</Link>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ const AddListing = () => {
         date,
     }
 
-    fetch('http://localhost:3000/post-product', {
+    fetch('https://paw-mart-server-self.vercel.app/post-product', {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
@@ -52,135 +52,164 @@ const AddListing = () => {
   }
 
     return (
-         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
-         <title>Add Listing</title>
-      <div className="card-body p-6 relative">
-        <h2 className="text-2xl font-bold text-center mb-6">Add New Model</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name Field */}
-          <div>
-            <label className="label font-medium"> Pet Name</label>
-            <input
-              type="text"
-              name="name"
-              required
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter name"
-            />
-          </div>
-           {/* Category Dropdown */}
-          <div>
-            <label className="label font-medium">Category</label>
-            <select
-              
-              name="category"
-              value={category}
+        <div className="container m-auto flex flex-col md:flex-row items-center justify-center gap-10 min-h-screen p-6 bg-base-100">
+  {/* Left Side Image Section */}
+  <div className="hidden md:flex w-1/2 justify-center">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0803/1613/7793/files/petopia_1920x1080_aabc06ec-8f25-471e-93ca-2567e75e1a8d.webp?v=1723122537"
+      alt="PawMart Illustration"
+      className="w-3/4  object-contain drop-shadow-lg"
+    />
+  </div>
+
+  {/* Right Side Form Section */}
+  <div className="card border border-gray-200 bg-white w-full md:w-1/2 shadow-2xl rounded-2xl">
+    <title>Add Listing</title>
+    <div className="card-body p-6 md:p-8">
+      <h2 className="text-3xl font-bold text-center mb-6 text-pink-600">
+        Add New Listing
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Pet Name */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Pet Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            className="input input-bordered w-full rounded-full focus:outline-pink-400"
+            placeholder="Enter pet name"
+          />
+        </div>
+
+        {/* Category */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Category
+          </label>
+          <select
+            name="category"
+            value={category}
             onChange={(e) => {
               setCategory(e.target.value);
               if (e.target.value === "Pets") setPrice(0);
             }}
-              required
-              className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
-            >
-              <option value="" disabled>
-                Select category
-              </option>
-              
-              <option value="Plants">Pets</option>
-              <option value="Foods">Foods</option>
-              <option value="Home & Living">Accessories</option>
-              <option value="Characters">Care Products</option>
-             
-              <option value="Other">Other</option>
-            </select>
-          </div>
+            required
+            className="select select-bordered w-full rounded-full focus:outline-pink-400"
+          >
+            <option value="" disabled>
+              Select category
+            </option>
+            <option value="Pets">Pets</option>
+            <option value="Pet Food">Foods</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Pet Care Products">Care Products</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-          {/* price */}
-          <div>
-            <label className="label font-medium">Price</label>
-            <input
-              type="number"
-              name="price"
-              value={category === "Pets" ? 0 : price}
+        {/* Price */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Price
+          </label>
+          <input
+            type="number"
+            name="price"
+            value={category === "Pets" ? 0 : price}
             onChange={(e) => setPrice(e.target.value)}
             readOnly={category === "Pets"}
-              required 
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter price"
-            />
-          </div>
-          {/* location */}
-          <div>
-            <label className="label font-medium">Location</label>
-            <input
-              type="text"
-              name="location"
-              required
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="location"
-            />
-          </div>
+            required
+            className="input input-bordered w-full rounded-full focus:outline-pink-400"
+            placeholder="Enter price"
+          />
+        </div>
 
-         
-
-          {/* Description Textarea */}
-          <div>
-            <label className="label font-medium">Description</label>
-            <textarea
-              name="description"
-              required
-              rows="3"
-             className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[250px]"
-              placeholder="Enter description"
-            ></textarea>
-          </div>
-
-          {/* Img URL */}
-          <div>
-            <label className="label font-medium">Image URL</label>
-            <input
-              type="url"
-              name="image"
-              required
-              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="https://example.com/image.jpg"
-            />
-          </div>
-          {/* Date */}
+        {/* Location */}
         <div>
-          <label className="block font-medium">Date</label>
+          <label className="label font-semibold text-lg text-gray-700">
+            Location
+          </label>
+          <input
+            type="text"
+            name="location"
+            required
+            className="input input-bordered w-full rounded-full focus:outline-pink-400"
+            placeholder="Enter location"
+          />
+        </div>
+
+        {/* Description */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Description
+          </label>
+          <textarea
+            name="description"
+            required
+            rows="4"
+            className="textarea textarea-bordered w-full rounded-2xl focus:outline-pink-400"
+            placeholder="Enter description"
+          ></textarea>
+        </div>
+
+        {/* Image URL */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Image URL
+          </label>
+          <input
+            type="url"
+            name="image"
+            required
+            className="input input-bordered w-full rounded-full focus:outline-pink-400"
+            placeholder="https://example.com/image.jpg"
+          />
+        </div>
+
+        {/* Date */}
+        <div>
+          <label className="label font-semibold text-lg text-gray-700">
+            Date
+          </label>
           <input
             name="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
-            className="input input-bordered w-full"
+            className="input input-bordered w-full rounded-full focus:outline-pink-400"
           />
         </div>
-            {/* Email */}
+
+        {/* Email */}
         <div>
-          <label className="block font-medium">Email</label>
+          <label className="label font-semibold text-lg text-gray-700">
+            Email
+          </label>
           <input
             name="email"
             type="email"
             value={user?.email || ""}
             readOnly
-            className="input input-bordered w-full bg-gray-100"
+            className="input input-bordered w-full bg-gray-100 rounded-full"
           />
         </div>
-        
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
-          >
-            Add Model
-          </button>
-        </form>
-      </div>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="btn w-full text-white mt-6 rounded-full bg-gradient-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
+        >
+          Add Listing
+        </button>
+      </form>
     </div>
+  </div>
+</div>
+
     );
 };
 

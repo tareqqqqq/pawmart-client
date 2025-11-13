@@ -16,7 +16,7 @@ const MyOrder = () => {
          if (!user?.email) return; 
        
    
-           fetch(`http://localhost:3000/my-orders?email=${user.email}`)
+           fetch(`https://paw-mart-server-self.vercel.app/my-orders?email=${user.email}`)
            .then(res=> res.json())
            .then(data=> {
                
@@ -62,11 +62,16 @@ const MyOrder = () => {
    
    
        if(loading) {
-           return <div> Please wait ... Loading...</div>
+           return (
+            <div className="flex items-center justify-center min-h-screen">
+  <span className="loading loading-spinner loading-xl"></span>
+</div>
+
+           )
        }
    
        return (
-             <div className="max-w-5xl mx-auto p-4">
+             <div className="container m-auto p-4">
               <title>My Order</title>
       <h1 className="text-3xl font-bold mb-4">My Orders</h1>
 
@@ -77,9 +82,9 @@ const MyOrder = () => {
         Download Report
       </button>
 
-      <div className="overflow-x-auto">
-        <table className="table w-full border">
-          <thead>
+      <div className="overflow-x-auto shadow-lg rounded-2xl">
+        <table className="table w-full ">
+          <thead className="bg-pink-500 text-white">
             <tr>
               <th>Product Name</th>
               <th>Buyer Name</th>

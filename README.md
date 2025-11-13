@@ -1,16 +1,29 @@
-# React + Vite
+website name: PawMart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Site URL: 
 
-Currently, two official plugins are available:
+PawMart is a community-driven pet adoption and supplies marketplace where users can adopt pets, buy pet-related products, and connect with local sellers — all in one place. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Pet Adoption & Supplies Marketplace:** Browse listings for adoptable pets or purchase pet supplies from trusted sellers.  
+**User Authentication:** Secure login and registration using Firebase Authentication.  
+**Add & Manage Listings:** Registered users can create, edit, and delete their own pet or product listings.  
+**Smart Search :** Quickly find pets or items by  name . 
 
-## Expanding the ESLint configuration
+**React**, **Tailwind CSS**, and **Framer Motion** for engaging user experience.  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+ **Frontend:** React.js, Tailwind CSS, DaisyUI  
+ **Backend:** Node.js, Express.js, MongoDB  
+ **Authentication:** Firebase Auth  
+ **Hosting:** Clodify (Client), Vercel (Server)  
+
+---
+
+
