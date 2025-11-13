@@ -85,12 +85,13 @@ const ListDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
+              console.log(data.result);
+                if (data.result.insertedId) {
                     modalRef.current.close();
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "success",
-                        title: "Your bid has been placed.",
+                        title: "Your are ordered successfully .",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -257,7 +258,7 @@ const ListDetails = () => {
                                     {/* address */}
                                     <label className="label">Address</label>
                                     <input type="text" name='address' className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                                        placeholder='Your Price'
+                                        placeholder='Your Address'
                                     />
                                     {/* Date */}
         <div>

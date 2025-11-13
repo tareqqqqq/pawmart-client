@@ -6,20 +6,20 @@ import WhyAdopt from '../components/WhyAdopt';
 import Section from '../components/Section';
 import CategorySection from '../components/CategorySection';
 import { use } from 'react';
-import { AuthContext } from '../Auth/AuthContext';
+// import { AuthContext } from '../Auth/AuthContext';
 
 const Home = () => {
      const data = useLoaderData()
-     const { loading } = use(AuthContext);
+    //  const { loading } = use(AuthContext);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-  <span className="loading loading-spinner loading-xl"></span>
-</div>
+//   if (loading) {
+//     return (
+//       <div className="flex items-center justify-center min-h-screen">
+//   <span className="loading loading-spinner loading-xl"></span>
+// </div>
 
-    );
-  }
+//     );
+//   }
      
     return (
         <div className='container m-auto'>

@@ -73,10 +73,10 @@ const MyOrder = () => {
        return (
              <div className="container m-auto p-4">
               <title>My Order</title>
-      <h1 className="text-3xl font-bold mb-4">My Orders</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">My Orders</h1>
 
       <button
-        className="btn btn-primary mb-4"
+        className="btn bg-black text-white mb-4"
         onClick={downloadPDF}
       >
         Download Report

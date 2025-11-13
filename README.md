@@ -1,6 +1,6 @@
 website name: PawMart
 
-### Live Site URL: 
+### Live Site URL: https://pawmart-pet.pages.dev/
 
 PawMart is a community-driven pet adoption and supplies marketplace where users can adopt pets, buy pet-related products, and connect with local sellers — all in one place. 
 

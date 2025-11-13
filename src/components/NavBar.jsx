@@ -177,6 +177,7 @@ const NavBar = () => {
             {" "}
             <IoLogIn /> Login
           </Link>
+          
         )}
       </div>
     </div>
